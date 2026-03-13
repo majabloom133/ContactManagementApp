@@ -7,6 +7,13 @@ public class ContactMapService {
 
     public void addContact(String name, String number) {
 // Add a new contact
+        // Check if name already exists
+        for (Contacts c : contactList) {
+            if (c.getName().equalsIgnoreCase(name)) {
+                System.out.println("Error: Contact already exists!");
+                return;
+            }
+        }
         Contacts newContact = new Contacts(name, number);
 // Add to list
         contactList.add(newContact);
@@ -44,6 +51,22 @@ public class ContactMapService {
     }
     }
 
+    // Method to search by number
+    public  void  searchByNumber(String number) {
+        boolean found = false;
+        for (Contacts c : contactList) {
+            // Check if number matches
+            if (c.getNumber().equals(number)) {
+                System.out.println("Found: " + c.getName() + " (" + c.getNumber() + ")");
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("No contact found with the number: " + number);
+        }
+    }
+
 }
 
 // In case we want to add the function "Delete Contact"
@@ -52,14 +75,21 @@ Paste before  last  curly brace
 // Method to Delete Contact
 public void deleteContact(String name) {
 boolean removed = false;
-
-// for-loop to avoid problems when items are removed
+// Use Standard for-loop to remove items by index.
 for (int i = 0; i < contactList.size(); i++) {
+// Check if name matches, case insensitive
 if (contactList.get(i).getName().equalsIgnoreCase(name)) {
 contactList.remove(i);
+// Print message telling user that the contact was deleted.
 System.out.println("Contact '" + name + "' was deleted.");
 removed = true;
+// Exit loop after deleting the contact.
 break;
+}
+}
+// If the loop finishes without finding name
+if (!removed) {
+System.out.println("Error: No contact was found with the name: " + name);
 }
 }
  */
