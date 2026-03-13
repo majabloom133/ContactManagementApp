@@ -47,11 +47,29 @@ public class Main {
 
                     /*
                     case "5":
-                         helper.printMessage("Enter name to delete: ");
-                         String nameToDelete = helper.getStringInput();
-                         service.deleteContact(nameToDelete);
-                         break;
-                         */
+                    helper.printMessage("Enter name to delete: ");
+                    String nameToDelete = helper.getStringInput();
+
+                    // Find the contact
+                    Contacts foundContact = service.findContactByName(nameToDelete);
+
+                    if (foundContact != null) {
+                         // Display matching contact
+                         helper.printMessage("Found Contact: " + foundContact.getName());
+                         // Ask for confirmation
+                         helper.printMessage("Are you sure you want to delete contact?");
+                         String confirm = helper.getStringInput();
+
+                         if (confirm.equalsIgnoreCase("Y")) {
+                              service.removeContact(foundContact);
+                         } else {
+                              helper.printMessage("Deletion was cancelled.");
+                         }
+                    } else {
+                         helper.printMessage("Error: No contact with that name was found. ");
+                    }
+                    break;
+                    */
                     case "0":
                          running = false;
                          helper.printMessage("Exiting program...");

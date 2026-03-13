@@ -32,7 +32,7 @@ public class ContactMapService {
         }
     }
 
-    // Method to search
+    // Method to search by name
     public void searchByName(String name) {
         boolean found = false;
         // In arrayLists each person needs to be searched for
@@ -46,13 +46,13 @@ public class ContactMapService {
             }
         }
 
-    if (!found) {
-        System.out.println("No contact found with the name: " + name);
-    }
+        if (!found) {
+            System.out.println("No contact found with the name: " + name);
+        }
     }
 
     // Method to search by number
-    public  void  searchByNumber(String number) {
+    public void searchByNumber(String number) {
         boolean found = false;
         for (Contacts c : contactList) {
             // Check if number matches
@@ -66,35 +66,27 @@ public class ContactMapService {
             System.out.println("No contact found with the number: " + number);
         }
     }
-
+    /*
+// In case we want to add Delete Contact
+// Method to find a contact by name (for deletion)
+public Contacts findContactsByName(String name) {
+for (Contacts c : contactList) {
+if (c.getName().equalsIgnoreCase(name)) {
+return c;
+}
+}
+// Tells Main "No contact was found"
+return null;
 }
 
-// In case we want to add the function "Delete Contact"
-/*
-Paste before  last  curly brace
-// Method to Delete Contact
-public void deleteContact(String name) {
-boolean removed = false;
-// Use Standard for-loop to remove items by index.
-for (int i = 0; i < contactList.size(); i++) {
-// Check if name matches, case insensitive
-if (contactList.get(i).getName().equalsIgnoreCase(name)) {
-contactList.remove(i);
-// Print message telling user that the contact was deleted.
-System.out.println("Contact '" + name + "' was deleted.");
-removed = true;
-// Exit loop after deleting the contact.
-break;
-}
-}
-// If the loop finishes without finding name
-if (!removed) {
-System.out.println("Error: No contact was found with the name: " + name);
-}
+// Method to actually remove contact
+public void removeContact(Contacts contact) {
+contactList.remove(contact);
+System.out.println("Sucess: Contact removed!");
 }
  */
 
-
+}
 
 // Old HashMap Code
 /* // Import HashMap class for storage
