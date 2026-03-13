@@ -1,51 +1,51 @@
+// Import scanner class to read input from keyboard
 import  java.util.Scanner;
 
 public class Main {
-
      public static void main(String[] args) {
 
-          // Connect to Service class
+          // Create the "brain" - connect to Service class
           ContactMapService service = new ContactMapService();
-          // Create scanner to read input
-          Scanner scanner = new Scanner(System.in);
-          // Variable to start/end program
+          // Create "assistant" - Helper class
+          ConsoleHelper helper = new ConsoleHelper();
+
+          // Variable to keep loop running
           boolean running = true;
 
           while (running) {
-               System.out.println("\n=== Contact Management ===");
-               System.out.println("1. Add contact");
-               System.out.println("2. Display all contacts");
-               System.out.println("0. Exit");
-               System.out.println("Choose an option: ");
+               // Use Helper to find menu
+               helper.displayMenu();
+               // Use Helper to get the choice
+               String choice = helper.getStringInput();
 
-               // Read input
-               String choice = scanner.nextLine();
-
-               // Add contact
+               // Add Contact
                if (choice.equals("1")) {
-                    System.out.print("Enter name: ");
-                    String name = scanner.nextLine();
+                    // Enter name
+                    helper.printMessage("Enter name: ");
+                    String name = helper.getStringInput();
+                    // Enter number
+                    helper.printMessage("Enter number: ");
+                    String number = helper.getStringInput();
+                    // Call the Service to add contact
+                    service.addContact(name, number);
 
-                    System.out.print("Enter mobile: ");
-                    String mobile = scanner.nextLine();
-
-                    // Call for service class (logic)
-                    service.addContact(name, mobile);
-
-               // List contacts
+                    // List all contacts
                } else if (choice.equals("2")) {
                     service.listContact();
-
-               // Exit
+                    // Search for contacts
+               } else if (choice.equals("3")) {
+                    helper.printMessage("Enter name to search for: ");
+                    String searchName = helper.getStringInput();
+                    service.searchByName(searchName);
+                    // Ends loop, exits program
                } else if (choice.equals("0")) {
                     running = false;
-                    System.out.println("Exiting program...");
+                    helper.printMessage("Exiting Program...");
+                    // Handle invalid input
                } else {
-                    System.out.println("Invalid choice, try again.");
+                    helper.printMessage("Invalid choice, please try again!");
                }
 
           }
-
      }
-
 }
