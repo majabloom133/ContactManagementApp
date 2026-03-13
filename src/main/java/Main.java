@@ -69,6 +69,10 @@ public class Main {
                     }
                     break;
 
+                    case "6":
+                         service.sortContacts();
+                         break;
+
                     case "0":
                          running = false;
                          helper.printMessage("Exiting program...");

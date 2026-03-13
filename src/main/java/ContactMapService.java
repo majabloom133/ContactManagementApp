@@ -68,6 +68,19 @@ public class ContactMapService {
         }
     }
 
+    // Sort contacts alphabetically, based on name
+    public void sortContacts() {
+        // If no names are added, error message shows up saying the list is empty
+        if (contactList.isEmpty()) {
+            System.out.println("Nothing to sort, list is empty!");
+            return;
+        }
+        // Sort the list by comparing names
+        contactList.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
+        // Print message saying the contacts are sorted.
+        System.out.println("Contacts are now sorted alphabetically!");
+    }
+
     // New method for deletion - find by number
     public Contacts findContactByNumber(String number) {
         for (Contacts c : contactList) {
