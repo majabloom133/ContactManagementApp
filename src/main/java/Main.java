@@ -18,6 +18,56 @@ public class Main {
                // Use Helper to get the choice
                String choice = helper.getStringInput();
 
+               switch (choice) {
+
+                    case "1":
+                         helper.printMessage("Enter name: ");
+                         String name = helper.getStringInput();
+                         helper.printMessage("Enter number: ");
+                         String number = helper.getStringInput();
+                         service.addContact(name, number);
+                         break;
+
+                    case "2":
+                         service.listContact();
+                         break;
+
+                    case "3":
+                         helper.printMessage("Enter the name you want to search for: ");
+                         String searchName = helper.getStringInput();
+                         service.searchByName(searchName);
+                         break;
+
+
+                    case "4":
+                         helper.printMessage("Enter the number you want to search for: ");
+                         String searchNumber = helper.getStringInput();
+                         service.searchByNumber(searchNumber);
+                         break;
+
+                    /*
+                    case "5":
+                         helper.printMessage("Enter name to delete: ");
+                         String nameToDelete = helper.getStringInput();
+                         service.deleteContact(nameToDelete);
+                         break;
+                         */
+                    case "0":
+                         running = false;
+                         helper.printMessage("Exiting program...");
+                         break;
+
+                    default:
+                         helper.printMessage("Invalid choice, please try again!");
+                         break;
+
+               }
+          }
+     }
+}
+
+               /*
+
                // Add Contact
                if (choice.equals("1")) {
 
@@ -49,17 +99,16 @@ public class Main {
                     String searchNumber = helper.getStringInput();
                     service.searchByNumber(searchNumber);
 
-               /*
-               If we want to be able to delete a contact
 
+               (If we want to be able to delete a contact
                // Delete a contact
                } else if (choice.equals("5")) {
                helper.printMessage("Enter the name you want to delete: ");
                String nameToDelete = helper.getStringInput();
                // Call the service to remove the contact
-               service.deleteContact(nameToDelete);
+               service.deleteContact(nameToDelete);    )
 
-               // Exit program                                                     */
+               // Exit program
                } else if (choice.equals("0")) {
                     running = false;
                     helper.printMessage("Exiting Program...");
@@ -72,3 +121,4 @@ public class Main {
           }
      }
 }
+*/
