@@ -46,10 +46,27 @@ public class ContactMapService {
 
 }
 
+// In case we want to add the function "Delete Contact"
+/*
+Paste before  last  curly brace
+// Method to Delete Contact
+public void deleteContact(String name) {
+boolean removed = false;
 
-    //if (!found) {
-      //  System.out.println("No contact found with the name: " + name);
+// for-loop to avoid problems when items are removed
+for (int i = 0; i < contactList.size(); i++) {
+if (contactList.get(i).getName().equalsIgnoreCase(name)) {
+contactList.remove(i);
+System.out.println("Contact '" + name + "' was deleted.");
+removed = true;
+break;
+}
+}
+ */
 
+
+
+// Old HashMap Code
 /* // Import HashMap class for storage
 // Import Map interface to define storage type
 import java.util.HashMap;

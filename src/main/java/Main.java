@@ -49,3 +49,14 @@ public class Main {
           }
      }
 }
+
+/*
+Add this after search function, if we want to add function to delete contacts.
+
+// Delete a contact
+} else if (choice.equals("4)) {
+helper.printMessage("Enter the name you want to delete: ");
+String nameToDelete = helper.getStringInput();
+service.deleteContact(nameToDelete);
+
+ */
