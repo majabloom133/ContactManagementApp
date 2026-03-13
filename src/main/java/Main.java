@@ -73,6 +73,26 @@ public class Main {
                          service.sortContacts();
                          break;
 
+                    case "7":
+                         helper.printMessage("Enter the number of the contact you want to update: ");
+                         String numToUpdate = helper.getStringInput();
+                         Contacts contactToEdit = service.findContactByNumber(numToUpdate);
+
+                         if (contactToEdit != null) {
+                              helper.printMessage("Current: " + contactToEdit.getName() + " (" + contactToEdit.getNumber() + ")");
+
+                              helper.printMessage("Enter new name: ");
+                              String updatedName = helper.getStringInput();
+                              helper.printMessage("Enter new number: ");
+                              String updatedNumber = helper.getStringInput();
+
+                              service.updateContact(contactToEdit, updatedName, updatedNumber);
+                         } else {
+                              helper.printMessage("Error: Contact was not found!");
+                         }
+                         break;
+
+
                     case "0":
                          running = false;
                          helper.printMessage("Exiting program...");

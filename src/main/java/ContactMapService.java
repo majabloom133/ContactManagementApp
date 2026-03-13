@@ -76,9 +76,28 @@ public class ContactMapService {
             return;
         }
         // Sort the list by comparing names
+        // contactList.sort is a built-in function in Java
+        // compareToIgnoreCase is a standard method for Strings in Java.
         contactList.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
         // Print message saying the contacts are sorted.
         System.out.println("Contacts are now sorted alphabetically!");
+    }
+
+    // Method to update contacts
+    public void updateContact(Contacts contacts, String newName, String newNumber) {
+        // If the number changes, check that it doesn't already exist.
+        if (!contacts.getNumber().equals(newNumber)) {
+            for (Contacts c : contactList) {
+                if (c.getNumber().equals(newNumber)) {
+                    System.out.println("Error: The new number already exists!");
+                    return;
+                }
+            }
+        }
+        // Setters
+        contacts.setName(newName);
+        contacts.setNumber(newNumber);
+        System.out.println("Sucess: Contact was updated!");
     }
 
     // New method for deletion - find by number

@@ -18,6 +18,7 @@ public class ConsoleHelper {
         System.out.println("4. Search by number");
         System.out.println("5. Delete contact");
         System.out.println("6. Sort contacts alphabetically");
+        System.out.println("7. Update a contact");
         System.out.println("0. Exit");
         System.out.println("Please choose an option: ");
     }
