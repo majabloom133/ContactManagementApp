@@ -5,17 +5,20 @@ public class ContactMapService {
     // Change declaration from Map to List - save contact objects here
     private List<Contacts> contactList = new ArrayList<>();
 
+
+    // Add a new contact
     public void addContact(String name, String number) {
-// Add a new contact
-        // Check if name already exists
+        // Check if number already exists, instead of name
         for (Contacts c : contactList) {
-            if (c.getName().equalsIgnoreCase(name)) {
-                System.out.println("Error: Contact already exists!");
+            // Compare number
+            if (c.getNumber().equals(number)) {
+                System.out.println("Error: A contact with the number " + number + " already exists!");
+                // Return if number is found
                 return;
             }
         }
+        // If number is not found -> Create and add
         Contacts newContact = new Contacts(name, number);
-// Add to list
         contactList.add(newContact);
         System.out.println("Sucess: New contact added!");
     }
@@ -32,7 +35,7 @@ public class ContactMapService {
         }
     }
 
-    // Method to search by name
+    // Method to search by name - Shows all matches if there are duplicate names
     public void searchByName(String name) {
         boolean found = false;
         // In arrayLists each person needs to be searched for
@@ -42,10 +45,8 @@ public class ContactMapService {
                 System.out.println("Found: " + c.getName() + " - " + c.getNumber());
                 found = true;
                 // Exit loop
-                break;
             }
         }
-
         if (!found) {
             System.out.println("No contact found with the name: " + name);
         }
@@ -66,27 +67,44 @@ public class ContactMapService {
             System.out.println("No contact found with the number: " + number);
         }
     }
+
+    // New method for deletion - find by number
+    public Contacts findContactByNumber(String number) {
+        for (Contacts c : contactList) {
+            if (c.getNumber().equals(number)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public void removeContact(Contacts contacts) {
+        contactList.remove(contacts);
+        System.out.println("Sucess: Contact removed!");
+    }
+}
+
     /*
-// In case we want to add Delete Contact
-// Method to find a contact by name (for deletion)
-public Contacts findContactsByName(String name) {
-for (Contacts c : contactList) {
-if (c.getName().equalsIgnoreCase(name)) {
-return c;
-}
-}
-// Tells Main "No contact was found"
-return null;
-}
+    // Delete contact
+    // Method to find a contact by name (for deletion)
+    public Contacts findContactByName(String name) {
+        for (Contacts c : contactList) {
+            if (c.getName().equalsIgnoreCase(name)) {
+                return c;
+            }
+        }
+    // Tells Main "No contact was found"
+        return null;
+    }
+    // Method to actually remove contact
+    public void removeContact(Contacts contact) {
+        contactList.remove(contact);
+        System.out.println("Sucess: Contact removed!");
+    }
 
-// Method to actually remove contact
-public void removeContact(Contacts contact) {
-contactList.remove(contact);
-System.out.println("Sucess: Contact removed!");
-}
- */
+     */
 
-}
+
 
 // Old HashMap Code
 /* // Import HashMap class for storage

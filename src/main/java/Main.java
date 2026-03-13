@@ -45,19 +45,18 @@ public class Main {
                          service.searchByNumber(searchNumber);
                          break;
 
-                    /*
-                    case "5":
-                    helper.printMessage("Enter name to delete: ");
-                    String nameToDelete = helper.getStringInput();
 
+                    case "5":
+                    helper.printMessage("Enter number to delete: ");
+                    String numberToDelete = helper.getStringInput();
                     // Find the contact
-                    Contacts foundContact = service.findContactByName(nameToDelete);
+                    Contacts foundContact = service.findContactByNumber(numberToDelete);
 
                     if (foundContact != null) {
                          // Display matching contact
-                         helper.printMessage("Found Contact: " + foundContact.getName());
+                         helper.printMessage("Found Contact: " + foundContact.getName() + " (" + foundContact.getNumber() + " )");
                          // Ask for confirmation
-                         helper.printMessage("Are you sure you want to delete contact?");
+                         helper.printMessage("Are you sure you want to delete contact? (Y/N)");
                          String confirm = helper.getStringInput();
 
                          if (confirm.equalsIgnoreCase("Y")) {
@@ -65,11 +64,11 @@ public class Main {
                          } else {
                               helper.printMessage("Deletion was cancelled.");
                          }
-                    } else {
+                    }else {
                          helper.printMessage("Error: No contact with that name was found. ");
                     }
                     break;
-                    */
+
                     case "0":
                          running = false;
                          helper.printMessage("Exiting program...");
@@ -134,9 +133,5 @@ public class Main {
                // Handle invalid input
                } else {
                     helper.printMessage("Invalid choice, please try again!");
-               }
 
-          }
-     }
-}
 */

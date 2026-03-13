@@ -16,10 +16,7 @@ public class ConsoleHelper {
         System.out.println("2. List all contacts");
         System.out.println("3. Search by name");
         System.out.println("4. Search by number");
-        /*
-        Activate this if we add "delete contact"
         System.out.println("5. Delete contact");
-         */
         System.out.println("0. Exit");
         System.out.println("Please choose an option: ");
     }
