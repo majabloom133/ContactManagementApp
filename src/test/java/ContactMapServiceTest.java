@@ -84,6 +84,40 @@ public class ContactMapServiceTest {
         // Verify contact no longer exists
         assertNull(found, "Contact should be successfully removed from the list");
     }
+
+    @Test
+    @DisplayName("Action Case: Updating existing contact's info.")
+    void testUpdateContact() {
+        // --- Arrange ---
+        service.addContact("Anna", "111");
+        Contact contact = service.findContactByNumber("111");
+
+        // --- Act ---
+        // Update existing contact with last name and change the number
+        service.updateContact(contact, "Anna Andersson", "222");
+        Contact updated = service.findContactByNumber("222");
+
+        // --- Assert ---
+        assertNotNull(updated, "The contact should be found at new number.");
+        assertEquals("Anna Andersson", updated.getName(), "The name should be updated correctly!");
+    }
+
+    @Test
+    @DisplayName("Complex Scenario: Sorting alpabetically")
+    void testSortContacts() {
+
+        // --- Arrange ---
+        // Add contacts in random order
+        service.addContact("Maja", "111");
+        service.addContact("Bella", "222");
+        service.addContact("Malin", "333");
+
+        // --- Act ---
+        service.sortContacts();
+
+        Contact first = service.findContactByNumber("111");
+        assertEquals("Maja", first.getName(), "Maja should still exist after sorting");
+    }
 }
 
 
