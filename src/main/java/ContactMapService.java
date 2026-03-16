@@ -100,7 +100,7 @@ public class ContactMapService {
         System.out.println("Sucess: Contact was updated!");
     }
 
-    // New method for deletion - find by number
+    // Finds a contact by number (used when deleting/updating)
     public Contact findContactByNumber(String number) {
         for (Contact c : contactList) {
             if (c.getNumber().equals(number)) {
