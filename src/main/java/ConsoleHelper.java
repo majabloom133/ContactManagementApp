@@ -24,13 +24,13 @@ public class ConsoleHelper {
     }
     // Method to get a line of text from user
     public String getStringInput() {
-    // Return input
+        // Return input
         return scanner.nextLine();
-        }
+    }
 
     // Method to print specific message to user
     public void printMessage(String message) {
-    // Print the message passed as an argument
+        // Print the message passed as an argument
         System.out.println(message);
     }
 

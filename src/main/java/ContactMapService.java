@@ -3,13 +3,13 @@ import java.util.List;
 
 public class ContactMapService {
     // Change declaration from Map to List - save contact objects here
-    private List<Contacts> contactList = new ArrayList<>();
+    private List<Contact> contactList = new ArrayList<>();
 
 
     // Add a new contact
     public void addContact(String name, String number) {
         // Check if number already exists, instead of name
-        for (Contacts c : contactList) {
+        for (Contact c : contactList) {
             // Compare number
             if (c.getNumber().equals(number)) {
                 System.out.println("Error: A contact with the number " + number + " already exists!");
@@ -18,7 +18,7 @@ public class ContactMapService {
             }
         }
         // If number is not found -> Create and add
-        Contacts newContact = new Contacts(name, number);
+        Contact newContact = new Contact(name, number);
         contactList.add(newContact);
         System.out.println("Sucess: New contact added!");
     }
@@ -29,7 +29,7 @@ public class ContactMapService {
             System.out.println("The list is empty!");
         } else {
             System.out.println("--- All Contacts ---");
-            for (Contacts c : contactList) {
+            for (Contact c : contactList) {
                 System.out.println(c.getName() + " (" + c.getNumber() + ")");
             }
         }
@@ -39,7 +39,7 @@ public class ContactMapService {
     public void searchByName(String name) {
         boolean found = false;
         // In arrayLists each person needs to be searched for
-        for (Contacts c : contactList) {
+        for (Contact c : contactList) {
             // If the name matches
             if (c.getName().equalsIgnoreCase(name)) {
                 System.out.println("Found: " + c.getName() + " - " + c.getNumber());
@@ -55,7 +55,7 @@ public class ContactMapService {
     // Method to search by number
     public void searchByNumber(String number) {
         boolean found = false;
-        for (Contacts c : contactList) {
+        for (Contact c : contactList) {
             // Check if number matches
             if (c.getNumber().equals(number)) {
                 System.out.println("Found: " + c.getName() + " (" + c.getNumber() + ")");
@@ -84,10 +84,10 @@ public class ContactMapService {
     }
 
     // Method to update contacts
-    public void updateContact(Contacts contacts, String newName, String newNumber) {
+    public void updateContact(Contact contact, String newName, String newNumber) {
         // If the number changes, check that it doesn't already exist.
-        if (!contacts.getNumber().equals(newNumber)) {
-            for (Contacts c : contactList) {
+        if (!contact.getNumber().equals(newNumber)) {
+            for (Contact c : contactList) {
                 if (c.getNumber().equals(newNumber)) {
                     System.out.println("Error: The new number already exists!");
                     return;
@@ -95,14 +95,14 @@ public class ContactMapService {
             }
         }
         // Setters
-        contacts.setName(newName);
-        contacts.setNumber(newNumber);
+        contact.setName(newName);
+        contact.setNumber(newNumber);
         System.out.println("Sucess: Contact was updated!");
     }
 
     // New method for deletion - find by number
-    public Contacts findContactByNumber(String number) {
-        for (Contacts c : contactList) {
+    public Contact findContactByNumber(String number) {
+        for (Contact c : contactList) {
             if (c.getNumber().equals(number)) {
                 return c;
             }
@@ -110,8 +110,8 @@ public class ContactMapService {
         return null;
     }
 
-    public void removeContact(Contacts contacts) {
-        contactList.remove(contacts);
+    public void removeContact(Contact contact) {
+        contactList.remove(contact);
         System.out.println("Sucess: Contact removed!");
     }
 }

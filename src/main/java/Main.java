@@ -47,27 +47,27 @@ public class Main {
 
 
                     case "5":
-                    helper.printMessage("Enter number to delete: ");
-                    String numberToDelete = helper.getStringInput();
-                    // Find the contact
-                    Contacts foundContact = service.findContactByNumber(numberToDelete);
+                         helper.printMessage("Enter number to delete: ");
+                         String numberToDelete = helper.getStringInput();
+                         // Find the contact
+                         Contact foundContact = service.findContactByNumber(numberToDelete);
 
-                    if (foundContact != null) {
-                         // Display matching contact
-                         helper.printMessage("Found Contact: " + foundContact.getName() + " (" + foundContact.getNumber() + " )");
-                         // Ask for confirmation
-                         helper.printMessage("Are you sure you want to delete contact? (Y/N)");
-                         String confirm = helper.getStringInput();
+                         if (foundContact != null) {
+                              // Display matching contact
+                              helper.printMessage("Found Contact: " + foundContact.getName() + " (" + foundContact.getNumber() + " )");
+                              // Ask for confirmation
+                              helper.printMessage("Are you sure you want to delete contact? (Y/N)");
+                              String confirm = helper.getStringInput();
 
-                         if (confirm.equalsIgnoreCase("Y")) {
-                              service.removeContact(foundContact);
-                         } else {
-                              helper.printMessage("Deletion was cancelled.");
+                              if (confirm.equalsIgnoreCase("Y")) {
+                                   service.removeContact(foundContact);
+                              } else {
+                                   helper.printMessage("Deletion was cancelled.");
+                              }
+                         }else {
+                              helper.printMessage("Error: No contact with that number was found. ");
                          }
-                    }else {
-                         helper.printMessage("Error: No contact with that name was found. ");
-                    }
-                    break;
+                         break;
 
                     case "6":
                          service.sortContacts();
@@ -76,7 +76,7 @@ public class Main {
                     case "7":
                          helper.printMessage("Enter the number of the contact you want to update: ");
                          String numToUpdate = helper.getStringInput();
-                         Contacts contactToEdit = service.findContactByNumber(numToUpdate);
+                         Contact contactToEdit = service.findContactByNumber(numToUpdate);
 
                          if (contactToEdit != null) {
                               helper.printMessage("Current: " + contactToEdit.getName() + " (" + contactToEdit.getNumber() + ")");

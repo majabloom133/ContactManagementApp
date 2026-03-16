@@ -1,4 +1,4 @@
-public class Contacts {
+public class Contact {
 
     // Declare private variable to store contact names.
 // Private fields are where information is stored
@@ -6,7 +6,7 @@ public class Contacts {
     private String number;
 
     //Constructor (like a start button for adding a contact)
-    public Contacts(String name, String number) {
+    public Contact(String name, String number) {
         this.name = name;
         this.number = number;
     }
@@ -33,5 +33,4 @@ public class Contacts {
         this.number = number;
     }
 }
-
 
