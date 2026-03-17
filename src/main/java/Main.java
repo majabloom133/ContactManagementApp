@@ -9,6 +9,9 @@ public class Main {
           // Create "assistant" - Helper class
           ConsoleHelper helper = new ConsoleHelper();
 
+          // Load contacts immediately when program starts.
+          service.loadFromFile();
+
           // Variable to keep loop running
           boolean running = true;
 
@@ -94,8 +97,10 @@ public class Main {
 
 
                     case "0":
-                         running = false;
+                         // Save contacts before existing
+                         service.saveToFile();
                          helper.printMessage("Exiting program...");
+                         running = false;
                          break;
 
                     default:
