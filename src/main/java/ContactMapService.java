@@ -1,5 +1,10 @@
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.io.File;
+
 
 public class ContactMapService {
     // Change declaration from Map to List - save contact objects here
@@ -114,4 +119,45 @@ public class ContactMapService {
         contactList.remove(contact);
         System.out.println("Sucess: Contact removed!");
     }
+
+    public void saveToFile() {
+        // Create the file contacts.txt
+        try (PrintWriter writer = new PrintWriter(new FileWriter("contacts.txt"))) {
+            for (Contact c : contactList) {
+                // Prints using the format Name|Number
+                writer.println(c.getName() + "|" + c.getNumber());
+            }
+            System.out.println("The contacts were saved successfully!");
+        } catch (Exception e) {
+            // If anything goes wrong
+            System.out.println("Error saving to file: " + e.getMessage());
+        }
+    }
+
+    public void loadFromFile() {
+        java.io.File file = new java.io.File("contacts.txt");
+        if (!file.exists()) return;
+
+        try (java.util.Scanner fileScanner = new java.util.Scanner(file)) {
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+                // Split the line - at the pipe symbol
+                String[] parts = line.split("\\|");
+
+                if (parts.length == 2) {
+                    // Create contact + add it directly to list
+                    contactList.add(new Contact(parts[0], parts[1]));
+                }
+            }
+            System.out.println("Contacts loaded from file");
+        } catch (Exception e) {
+            System.out.println("Error loading from file: " + e.getMessage());
+        }
+    }
+
+    // Getter used by unit tests to verify list order/content
+    public List<Contact> getContactList() {
+        return contactList;
+    }
+
 }
